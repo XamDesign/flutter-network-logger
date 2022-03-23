@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 
 import 'enumerate_items.dart';
 import 'network_event.dart';
@@ -127,13 +128,14 @@ class NetworkLoggerScreen extends StatelessWidget {
   final NetworkEventList eventList;
 
   /// Opens screen.
-  static Future<void> open(BuildContext context) {
-    return Navigator.push(
+  static Future<void> open(BuildContext context) async {
+    /*return Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => NetworkLoggerScreen(),
       ),
-    );
+    );*/
+    await Get.to(() => NetworkLoggerScreen());
   }
 
   final TextEditingController searchController =
@@ -272,11 +274,15 @@ class NetworkLoggerEventScreen extends StatelessWidget {
     BuildContext context,
     NetworkEvent event,
     NetworkEventList eventList,
-  ) {
-    return Navigator.of(context).push(route(
+  ) async {
+    /* return Navigator.of(context).push(route(
       event: event,
       eventList: eventList,
-    ));
+    ));*/
+    await Get.to(() => route(
+          event: event,
+          eventList: eventList,
+        ));
   }
 
   /// Which event to display details for.
