@@ -44,7 +44,7 @@ class NetworkLoggerButton extends StatefulWidget {
 
   NetworkLoggerButton({
     Key? key,
-    this.color = Colors.deepPurple,
+    this.color = Colors.orangeAccent,
     this.blinkPeriod = const Duration(seconds: 1, microseconds: 500),
     NetworkEventList? eventList,
   })  : this.eventList = eventList ?? NetworkLogger.instance,
@@ -257,12 +257,12 @@ class NetworkLoggerEventScreen extends StatelessWidget {
   const NetworkLoggerEventScreen({Key? key, required this.event})
       : super(key: key);
 
-  static Future<Route<void>> route({
+  static Route<void> route({
     required NetworkEvent event,
     required NetworkEventList eventList,
-  }) async {
-    return await Get.to(
-      () => StreamBuilder(
+  }) {
+    return MaterialPageRoute(
+      builder: (context) => StreamBuilder(
         stream: eventList.stream.where((item) => item.event == event),
         builder: (context, snapshot) => NetworkLoggerEventScreen(event: event),
       ),
@@ -274,15 +274,16 @@ class NetworkLoggerEventScreen extends StatelessWidget {
     BuildContext context,
     NetworkEvent event,
     NetworkEventList eventList,
-  ) async {
-    /*return Navigator.of(context).push(route(
+  ) {
+    return Navigator.of(context).push(route(
       event: event,
       eventList: eventList,
-    ));*/
-    await Get.to(() => route(
+    ));
+
+    /* await Get.to(() => route(
           event: event,
           eventList: eventList,
-        ));
+        ));*/
   }
 
   /// Which event to display details for.
