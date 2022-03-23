@@ -274,15 +274,15 @@ class NetworkLoggerEventScreen extends StatelessWidget {
     BuildContext context,
     NetworkEvent event,
     NetworkEventList eventList,
-  ) async {
-    /* return Navigator.of(context).push(route(
+  ) {
+    return Navigator.of(context).push(route(
       event: event,
       eventList: eventList,
-    ));*/
-    await Get.to(() => route(
+    ));
+    /*  await Get.to(() => route(
           event: event,
           eventList: eventList,
-        ));
+        ));*/
   }
 
   /// Which event to display details for.
