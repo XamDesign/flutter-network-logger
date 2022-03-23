@@ -257,12 +257,12 @@ class NetworkLoggerEventScreen extends StatelessWidget {
   const NetworkLoggerEventScreen({Key? key, required this.event})
       : super(key: key);
 
-  static Route<void> route({
+  static Future<Route<void>> route({
     required NetworkEvent event,
     required NetworkEventList eventList,
-  }) {
-    return MaterialPageRoute(
-      builder: (context) => StreamBuilder(
+  }) async {
+    return await Get.to(
+      () => StreamBuilder(
         stream: eventList.stream.where((item) => item.event == event),
         builder: (context, snapshot) => NetworkLoggerEventScreen(event: event),
       ),
@@ -274,15 +274,15 @@ class NetworkLoggerEventScreen extends StatelessWidget {
     BuildContext context,
     NetworkEvent event,
     NetworkEventList eventList,
-  ) {
-    return Navigator.of(context).push(route(
+  ) async {
+    /*return Navigator.of(context).push(route(
       event: event,
       eventList: eventList,
-    ));
-    /*  await Get.to(() => route(
+    ));*/
+    await Get.to(() => route(
           event: event,
           eventList: eventList,
-        ));*/
+        ));
   }
 
   /// Which event to display details for.
