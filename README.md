@@ -1,4 +1,4 @@
-# Network Logger
+# Network Logger for GETX
 Network logger with well designed user interface to inspect network traffic logs. Included with Dio interceptor. You can start and inspect traffic just by writing [2 lines](https://github.com/TheMisir/flutter-network-logger/blob/master/example/lib/main.dart#L30-L31) of code.
 
 ## 📷 Screenshots
